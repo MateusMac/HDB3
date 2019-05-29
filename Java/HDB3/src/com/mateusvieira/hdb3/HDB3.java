@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class HDB3 {
 
+    private static Scanner scan = new Scanner(System.in);
+
     public static void main(String[] args) {
 
 	menu();
@@ -11,10 +13,7 @@ public class HDB3 {
 
     private static void menu() {
 
-	@SuppressWarnings("resource")
-	Scanner num = new Scanner(System.in);
-
-	int opcao = 0;
+	int choice = 0;
 
 	do {
 	    System.out.println("\n\n### Sistema Para Codificar/Decodificar HDB3 ###");
@@ -24,13 +23,14 @@ public class HDB3 {
 	    System.out.println("                  |     0 - Sair              |");
 	    System.out.println("                  =============================\n");
 	    System.out.print("---> Digite uma das opções acima: ");
-	    opcao = num.nextInt();
+	    choice = scan.nextInt();
 	    System.out.print("\n");
 
-	    switch (opcao) {
+	    switch (choice) {
 
 		case 1:
-		    System.out.println(EncodeHDB3.encode("0101000101"));
+		    encode();
+		    //System.out.println(EncodeHDB3.encode("101000001100001100000001"));
 		    break;
 		case 2:
 		    DecodeHDB3.decode("050505");
@@ -43,6 +43,18 @@ public class HDB3 {
 		    Utils.clearScreen();
 		    break;
 	    }
-	} while (opcao != 0);
+	} while (choice != 0);
+    }
+    
+    private static String encode() {
+	
+	long input = 0;
+	
+	System.out.print("---> Digite um input para codificar: ");
+	input = scan.nextLong();
+	System.out.println(new Long(input).toString());
+	System.out.println(EncodeHDB3.encode(new Long(input).toString()));
+	
+	return "";
     }
 }
