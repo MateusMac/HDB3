@@ -8,7 +8,12 @@ public class HDB3 {
 
     public static void main(String[] args) {
 
-	menu();
+	String input = "";
+	//menu();
+	System.out.print("---> Digite um input para codificar em HDB3: ");
+	input = scan.nextLine();
+	System.out.println();
+	EncodeHDB3.encode(input);
     }
 
     private static void menu() {

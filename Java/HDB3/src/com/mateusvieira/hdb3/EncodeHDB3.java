@@ -5,6 +5,7 @@ public class EncodeHDB3 {
     protected static String encode(String message) {
 
 	String hdb3stream = message;
+	String ncoded = message;
 
 	int index0;
 	index0 = hdb3stream.indexOf("0000");
@@ -25,6 +26,7 @@ public class EncodeHDB3 {
 
 	char last1bit = '0';
 	char lastbit = '0';
+	ncoded = hdb3stream;
 
 	for (int pos = 0; pos < message.length(); pos++) {
 	    if (hdb3stream.charAt(pos) == '1') {
@@ -49,6 +51,9 @@ public class EncodeHDB3 {
 		hdb3stream = hdb3stream.substring(0, pos) + lastbit + hdb3stream.substring(pos + 1);
 	    }
 	}
+
+	System.out.println("Print 1: " + ncoded);
+	System.out.println("Print 2: " + hdb3stream);
 	return hdb3stream;
     }
 
